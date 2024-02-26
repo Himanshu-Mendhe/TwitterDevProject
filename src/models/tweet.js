@@ -3,30 +3,18 @@ const mongoose = require('mongoose');
 const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
-        required: true
+        required: true,
+        max: [250, "Tweet cannot be more than 250 charachters"]
     },
-    email: {
-        type: String
-    },
-    comments: [
-        {
-            content: {
-                type: String,
-                required: true
-            }
-        }
-    ]
+    hashtags: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hashtag'
+    }
+]
 }, {timestamps: true});
-
-tweetSchema.virtual('contentWithEmail').get(function process() {
-    return this.content + "\n" + "is created by: " + this.email;
-})
-
-tweetSchema.pre('save', function(next) {
-    console.log('inside a hook');
-    this.content = this.content + "{this piec is added through inside a hook}"
-    next();
-})
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
 module.exports = Tweet;
+
+// when new tweet is adde with a hashtag then we can not update the tweet and the hashtag as well; we can just delete it.

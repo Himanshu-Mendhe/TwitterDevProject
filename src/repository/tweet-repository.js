@@ -18,13 +18,12 @@ class TweetRepository {
             console.log("something went wrong")
         } 
     }
-
-    async update(id, data) {
+    async getWithComments(id) {
         try {
-            const tweet = await Tweet.findByIdAndUpdate(id, data, {new:true});
+            const tweet = await Tweet.findById(id).populate({path:"comments"}).lean();
             return tweet; 
         } catch (error) {
-            console.log("something went wrong")
+            console.log("something went wrong")  
         }
     }
 
@@ -37,7 +36,6 @@ class TweetRepository {
         }
     }
 
-    //pagination
     async getAll(offset,limit) {
         try {
             const tweet = await Tweet.find().skip(offset).limit(limit);

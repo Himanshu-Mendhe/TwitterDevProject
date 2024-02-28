@@ -6,7 +6,7 @@ class TweetRepository {
             const tweet = await Tweet.create(data);
             return tweet; 
         } catch (error) {
-            console.log("something went wrong")
+            console.log("something went wrong",error)
         }
     }
 
@@ -15,7 +15,7 @@ class TweetRepository {
             const tweet = await Tweet.findById(id);
             return tweet; 
         } catch (error) {
-            console.log("something went wrong")
+            console.log("something went wrong",error)
         } 
     }
     async getWithComments(id) {
@@ -23,7 +23,7 @@ class TweetRepository {
             const tweet = await Tweet.findById(id).populate({path:"comments"}).lean();
             return tweet; 
         } catch (error) {
-            console.log("something went wrong")  
+            console.log("something went wrong",error)  
         }
     }
 
@@ -32,7 +32,7 @@ class TweetRepository {
             const tweet = await Tweet.findByIdAndDelete(id);
             return tweet; 
         } catch (error) {
-            console.log("something went wrong")
+            console.log("something went wrong",error)
         }
     }
 
@@ -41,7 +41,7 @@ class TweetRepository {
             const tweet = await Tweet.find().skip(offset).limit(limit);
             return tweet; 
         } catch (error) {
-            console.log("something went wrong")
+            console.log("something went wrong",error)
         }
     }
 }

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 const connect = async() => {
-    await mongoose.connect('mongodb://localhost/twitter_dv');
+    await mongoose.connect('mongodb://localhost/twitter_dev');
 }
 module.exports = connect ;

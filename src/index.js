@@ -1,8 +1,11 @@
-const express = require('express');
+import express from 'express';
+import {connect} from './config/database.js';
 const app = express();
-const connect = require('./config/database');
 
-app.listen (3100, async() => {
+import HashtagRepository from './repository/hashtag-repository.js';
+import TweetService from './services/tweet-service.js';
+
+app.listen(3100, async() => {
     console.log("server started on port ----3100----")
     await connect();
     console.log("mongoose connection made");

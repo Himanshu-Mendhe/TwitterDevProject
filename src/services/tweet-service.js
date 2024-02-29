@@ -25,6 +25,11 @@ class TweetService {
         
         return tweet;
     }
+
+    async get(tweetId) {
+        const response = await this.tweetRepository.getWithComments(tweetId);
+        return response;
+    }
 };
 
 export default TweetService

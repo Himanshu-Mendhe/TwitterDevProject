@@ -18,7 +18,7 @@ app.listen(3100, async() => {
     console.log("server started on port ----3100----")
     await connect();
     console.log("mongoose connection made");
-
+/*
     const userRepo = new UserRepository();
     const tweetRepo = new TweetRepository();
     const tweets = await tweetRepo.getAll(0,10);
@@ -27,5 +27,5 @@ app.listen(3100, async() => {
     
     const likeService = new LikeService();
     await likeService.toggleLike(tweets[1].id, 'Tweet', users[0].id);
-
+*/
 })

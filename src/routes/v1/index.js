@@ -7,7 +7,7 @@ import {authenticate} from '../../middlewares/authenticate.js'
 
 const router = express.Router();
 
-router.post('/tweets', authenticate, createTweets);
+router.post('/tweets', /*authenticate,*/ createTweets);
 router.get('/tweets/:id', getTweets)
 
 router.post('/likes/toggle', toggleLike);
@@ -18,6 +18,4 @@ router.post('/signup', signup);
 
 router.post('/login', login);
 
-
 export default router;
-
